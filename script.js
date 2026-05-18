@@ -29,7 +29,7 @@ let currentQuestions = [];
 let userAnswers = {};
 let participantName = "";
 let timerInterval;
-let timeRemaining = 15 * 60;
+let timeRemaining = 30 * 60;
 let currentRecordDetails = [];
 
 // DOM Elements
@@ -111,7 +111,7 @@ function startExam() {
     userAnswers = {};
 
     clearInterval(timerInterval);
-    timeRemaining = 15 * 60;
+    timeRemaining = 30 * 60;
     updateTimerDisplay();
     timerInterval = setInterval(countdownTimer, 1000);
 
@@ -124,7 +124,7 @@ function countdownTimer() {
     updateTimerDisplay();
     if (timeRemaining <= 0) {
         clearInterval(timerInterval);
-        document.getElementById('alert-message').textContent = "El tiempo de 15 minutos se ha agotado. El examen se enviara automaticamente.";
+        document.getElementById('alert-message').textContent = "El tiempo de 30 minutos se ha agotado. El examen se enviara automaticamente.";
         alertModal.classList.add('active');
     }
 }
