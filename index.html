@@ -154,10 +154,21 @@
     <div id="confirm-modal" class="modal">
         <div class="modal-content card">
             <h3>Examen Incompleto</h3>
-            <p id="confirm-message">Te faltan preguntas por responder. ¿Seguro que quieres enviar tu evaluación?</p>
-            <div class="button-group horizontal">
+            <p id="confirm-message"></p>
+            <div class="button-group horizontal" style="margin-top: 1.5rem;">
                 <button id="confirm-cancel-btn" class="btn outline-btn">Volver al Examen</button>
                 <button id="confirm-submit-btn" class="btn primary-btn">Enviar de todos modos</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="clear-modal" class="modal">
+        <div class="modal-content card">
+            <h3 style="color: var(--danger);">⚠️ Limpiar Historial</h3>
+            <p>¿Estás seguro de que deseas eliminar TODO el historial de resultados? Esta acción <strong>NO</strong> se puede deshacer.</p>
+            <div class="button-group horizontal" style="margin-top: 1.5rem;">
+                <button id="clear-cancel-btn" class="btn outline-btn">Cancelar</button>
+                <button id="clear-confirm-btn" class="btn outline-btn danger">Sí, eliminar todo</button>
             </div>
         </div>
     </div>

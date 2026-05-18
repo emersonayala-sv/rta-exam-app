@@ -31,7 +31,6 @@ let participantName = "";
 let timerInterval;
 let timeRemaining = 15 * 60; // 15 minutos
 let currentRecordDetails = [];
-let pendingConfirmAction = null;
 
 // DOM Elements
 const startScreen = document.getElementById('start-screen');
@@ -53,6 +52,7 @@ const repoBody = document.getElementById('repo-body');
 // Modals
 const adminModal = document.getElementById('admin-modal');
 const confirmModal = document.getElementById('confirm-modal');
+const clearModal = document.getElementById('clear-modal');
 const alertModal = document.getElementById('alert-modal');
 const detailsModal = document.getElementById('details-modal');
 
@@ -68,10 +68,18 @@ clearRepoBtn.addEventListener('click', clearRepository);
 // Modal listeners
 document.getElementById('admin-cancel-btn').addEventListener('click', () => adminModal.classList.remove('active'));
 document.getElementById('admin-login-btn').addEventListener('click', verifyAdmin);
+// Confirm Submit (incomplete exam)
 document.getElementById('confirm-cancel-btn').addEventListener('click', () => confirmModal.classList.remove('active'));
 document.getElementById('confirm-submit-btn').addEventListener('click', () => {
     confirmModal.classList.remove('active');
-    if (pendingConfirmAction) { pendingConfirmAction(); pendingConfirmAction = null; }
+    processSubmit();
+});
+// Confirm Clear repo
+document.getElementById('clear-cancel-btn').addEventListener('click', () => clearModal.classList.remove('active'));
+document.getElementById('clear-confirm-btn').addEventListener('click', () => {
+    localStorage.removeItem('rta_exam_results');
+    loadRepositoryData();
+    clearModal.classList.remove('active');
 });
 document.getElementById('alert-ok-btn').addEventListener('click', () => {
     alertModal.classList.remove('active');
@@ -213,8 +221,7 @@ function updateProgress() {
 function finishExamCheck() {
     const answered = Object.keys(userAnswers).filter(k => userAnswers[k] !== '' && userAnswers[k] !== undefined).length;
     if (answered < currentQuestions.length) {
-        document.getElementById('confirm-message').textContent = `Solo has respondido ${answered} de ${currentQuestions.length} preguntas. ¿Seguro que quieres enviar? Las no respondidas se calificarán mal.`;
-        pendingConfirmAction = processSubmit;
+        document.getElementById('confirm-message').textContent = `Solo has respondido ${answered} de ${currentQuestions.length} preguntas. ¿Seguro que quieres enviar? Las preguntas sin responder contarán como incorrectas.`;
         confirmModal.classList.add('active');
         return;
     }
@@ -465,12 +472,7 @@ function downloadCSV() {
 }
 
 function clearRepository() {
-    document.getElementById('confirm-message').textContent = "¿Estás seguro de que deseas eliminar todo el historial de resultados? Esta acción NO se puede deshacer.";
-    pendingConfirmAction = () => {
-        localStorage.removeItem('rta_exam_results');
-        loadRepositoryData();
-    };
-    confirmModal.classList.add('active');
+    clearModal.classList.add('active');
 }
 
 // --- UTILS ---
