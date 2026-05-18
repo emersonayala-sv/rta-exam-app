@@ -824,7 +824,7 @@ function countdownTimer() {
     updateTimerDisplay();
     if (timeRemaining <= 0) {
         clearInterval(timerInterval);
-        document.getElementById('alert-message').textContent = "El tiempo de 15 minutos se ha agotado. El examen se enviara automaticamente.";
+        document.getElementById('alert-message').textContent = "El tiempo de 30 minutos se ha agotado. El examen se enviara automaticamente.";
         alertModal.classList.add('active');
     }
 }
