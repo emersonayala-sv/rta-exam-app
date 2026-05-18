@@ -31,6 +31,7 @@ let participantName = "";
 let timerInterval;
 let timeRemaining = 15 * 60; // 15 minutos
 let currentRecordDetails = [];
+let pendingConfirmAction = null;
 
 // DOM Elements
 const startScreen = document.getElementById('start-screen');
@@ -70,7 +71,7 @@ document.getElementById('admin-login-btn').addEventListener('click', verifyAdmin
 document.getElementById('confirm-cancel-btn').addEventListener('click', () => confirmModal.classList.remove('active'));
 document.getElementById('confirm-submit-btn').addEventListener('click', () => {
     confirmModal.classList.remove('active');
-    processSubmit();
+    if (pendingConfirmAction) { pendingConfirmAction(); pendingConfirmAction = null; }
 });
 document.getElementById('alert-ok-btn').addEventListener('click', () => {
     alertModal.classList.remove('active');
@@ -213,10 +214,10 @@ function finishExamCheck() {
     const answered = Object.keys(userAnswers).filter(k => userAnswers[k] !== '' && userAnswers[k] !== undefined).length;
     if (answered < currentQuestions.length) {
         document.getElementById('confirm-message').textContent = `Solo has respondido ${answered} de ${currentQuestions.length} preguntas. ¿Seguro que quieres enviar? Las no respondidas se calificarán mal.`;
+        pendingConfirmAction = processSubmit;
         confirmModal.classList.add('active');
         return;
     }
-    
     processSubmit();
 }
 
@@ -287,24 +288,24 @@ function calculateResults() {
     setTimeout(() => {
         circle.setAttribute('stroke-dasharray', `${percentage}, 100`);
     }, 100);
-    
-    circle.className = 'circle';
+
+    // SVG elements require setAttribute for class, not className
     let statusClass = 'poor';
     let statusText = 'No Aprobado';
     let message = "Requiere más entrenamiento en métricas de Salud WFM.";
     
     if (percentage >= 80) {
-        circle.classList.add('excellent');
+        circle.setAttribute('class', 'circle excellent');
         statusClass = 'excellent';
         statusText = 'Aprobado (Test)';
         message = "¡Excelente en teoría! Respuestas abiertas pendientes de revisión.";
     } else if (percentage >= 60) {
-        circle.classList.add('good');
+        circle.setAttribute('class', 'circle good');
         statusClass = 'good';
         statusText = 'En Revisión';
         message = "Buen conocimiento base. Analizar respuestas abiertas para decisión final.";
     } else {
-        circle.classList.add('poor');
+        circle.setAttribute('class', 'circle poor');
     }
     
     document.getElementById('score-message').textContent = message;
@@ -465,37 +466,11 @@ function downloadCSV() {
 
 function clearRepository() {
     document.getElementById('confirm-message').textContent = "¿Estás seguro de que deseas eliminar todo el historial de resultados? Esta acción NO se puede deshacer.";
-    confirmModal.classList.add('active');
-    
-    // Override the submit behavior for this specific use case
-    const submitBtn = document.getElementById('confirm-submit-btn');
-    const oldSubmit = submitBtn.onclick; // not used since we use addEventListener, but we'll reassign
-    
-    // A quick hack is to clone the button to remove listeners
-    const newSubmitBtn = submitBtn.cloneNode(true);
-    submitBtn.parentNode.replaceChild(newSubmitBtn, submitBtn);
-    
-    newSubmitBtn.addEventListener('click', () => {
+    pendingConfirmAction = () => {
         localStorage.removeItem('rta_exam_results');
         loadRepositoryData();
-        confirmModal.classList.remove('active');
-        
-        // Restore normal behavior
-        restoreConfirmBtn();
-    });
-    
-    document.getElementById('confirm-cancel-btn').addEventListener('click', restoreConfirmBtn, {once: true});
-}
-
-function restoreConfirmBtn() {
-    const btn = document.getElementById('confirm-submit-btn');
-    if(!btn) return;
-    const newBtn = btn.cloneNode(true);
-    btn.parentNode.replaceChild(newBtn, btn);
-    newBtn.addEventListener('click', () => {
-        confirmModal.classList.remove('active');
-        processSubmit();
-    });
+    };
+    confirmModal.classList.add('active');
 }
 
 // --- UTILS ---
