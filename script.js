@@ -80,7 +80,7 @@ document.getElementById('clear-confirm-btn').addEventListener('click', () => {
     localStorage.removeItem('rta_exam_results');
     loadRepositoryData();
     clearModal.classList.remove('active');
-});
+processSubmit
 document.getElementById('alert-ok-btn').addEventListener('click', () => {
     alertModal.classList.remove('active');
     processSubmit();
