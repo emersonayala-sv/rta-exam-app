@@ -1,27 +1,27 @@
 const objectiveQuestions = [
     { id: 1, type: "true_false", question: "El nivel de servicio y el ASA se comportan de forma directa a la profundidad de la cola de llamadas Inbound.", options: ["Verdadero", "Falso"], correctAnswer: 1 },
-    { id: 2, type: "true_false", question: "Durante un pico de demanda por una emergencia sanitaria con múltiples canales bajo presión, se debe proteger primero el canal Digital (WhatsApp) antes que el Inbound.", options: ["Verdadero", "Falso"], correctAnswer: 1 },
-    { id: 3, type: "true_false", question: "Una mayor ocupación mejora la eficiencia, pero conlleva el riesgo de agotamiento del personal médico/administrativo y un ASA más prolongado si es demasiado alta.", options: ["Verdadero", "Falso"], correctAnswer: 0 },
-    { id: 4, type: "true_false", question: "La fórmula de Erlang C se utiliza principalmente para estimar las necesidades de FTE en función del volumen Inbound, AHT y SL objetivo.", options: ["Verdadero", "Falso"], correctAnswer: 0 },
-    { id: 5, type: "true_false", question: "Para definir umbrales de alerta útiles, es recomendable comenzar con la volatilidad histórica del intervalo y ajustar por canal (Inbound, Outbound, Digital).", options: ["Verdadero", "Falso"], correctAnswer: 0 },
-    { id: 6, type: "multiple_choice", question: "Si una campaña de vacunación o emergencia aumenta el volumen Inbound en un 60% en 10 minutos, ¿cuál de las siguientes acciones es la más adecuada para los primeros 30 minutos?", options: ["Suspender descansos/capacitación, priorizar llamadas Inbound y enviar comunicación de la situación a las clínicas.", "Normalizar los horarios y publicar un resumen posterior al incidente.", "Limitar la concurrencia de WhatsApp y establecer reuniones de crisis cada 120 minutos.", "Ignorar el aumento hasta que pasen 60 minutos para confirmar la tendencia."], correctAnswer: 0 },
-    { id: 7, type: "multiple_choice", question: "¿Qué métricas son esenciales monitorear en un panel de control intradiario para una operación de salud?", options: ["Tasa de conversión de ventas y costo por adquisición.", "SL, ASA, profundidad de la cola, abandono y ocupación por canal (Inbound/Digital).", "Ausentismo mensual y rotación de personal (Métricas de HR).", "Costo por llamada y margen de beneficio."], correctAnswer: 1 },
-    { id: 8, type: "multiple_choice", question: "¿Qué herramienta intradiaria es mejor utilizar para gestionar la demanda (reducir volumen entrante) durante un pico de llamadas?", options: ["Mensajes en el IVR y respuestas automáticas en WhatsApp derivando al portal de pacientes (autoservicio).", "Intercambios de VTO y horas extras.", "Asignar agentes con habilidades transversales.", "Congelar el tiempo improductivo."], correctAnswer: 0 },
-    { id: 9, type: "multiple_choice", question: "¿Cómo se debe gestionar un problema de adherencia recurrente en un agente o coordinador de citas sin perjudicar su moral?", options: ["Despedir al agente de inmediato.", "Ignorarlo si el agente tiene buen AHT.", "Colaborar con supervisores en un plan de capacitación que considere el contexto (retrasos en el sistema médico, formación).", "Hacer una advertencia pública en el chat grupal."], correctAnswer: 2 },
-    { id: 10, type: "multiple_choice", question: "Cuando la dirección médica exige baja tasa de abandono en Inbound (urgencias), pero administración presiona por mayor disponibilidad en Digital (WhatsApp) para agendar citas, ¿cómo manejas estas prioridades contrapuestas?", options: ["Priorizar siempre agendamiento porque genera ingresos a las clínicas.", "Priorizar siempre Inbound sin notificar a las otras áreas.", "Cuantificar el impacto en la atención, proponer priorización Inbound con medidas de protección y desbordes para WhatsApp.", "Dejar que los agentes decidan qué canal atender."], correctAnswer: 2 },
-    { id: 11, type: "yes_no", question: "¿Es una buena práctica experimentar con opciones de devolución de llamada (callback) en Inbound durante picos de demanda si el proceso clínico lo permite?", options: ["Sí", "No"], correctAnswer: 0 },
-    { id: 12, type: "yes_no", question: "¿Se debe priorizar la velocidad (SL/ASA) a expensas de la calidad de atención al paciente (CSAT) de forma indefinida durante períodos de alto tráfico?", options: ["Sí", "No"], correctAnswer: 1 },
-    { id: 13, type: "yes_no", question: "¿Es correcto tomar decisiones intradiarias basándose únicamente en la intuición cuando los datos de los paneles son confusos o poco fiables?", options: ["Sí", "No"], correctAnswer: 1 },
-    { id: 14, type: "yes_no", question: "¿Se debería incluir una matriz RACI y árboles de decisión en un manual de estrategias en tiempo real para contingencias sanitarias?", options: ["Sí", "No"], correctAnswer: 0 },
-    { id: 15, type: "yes_no", question: "¿Mover temporalmente agentes de Outbound (campañas preventivas) a Inbound (atención inmediata) es una táctica válida durante un pico imprevisto de volumen?", options: ["Sí", "No"], correctAnswer: 0 },
-    { id: 16, type: "multiple_choice", question: "Al revisar el panel de KPIs de atención, notas que en la franja de 08:00 a 10:00 AM el número de llamadas abandonadas se dispara (más de 20 por intervalo), mientras que en la madrugada es casi nulo. ¿Qué acción preventiva debes tomar para los siguientes días?", options: ["Esperar al final del día para reportarlo al cliente.", "Alinear los horarios y restringir descansos/pausas en la franja de 08:00 a 10:00 para maximizar la concurrencia en el pico.", "Reducir la cantidad de agentes en Inbound en la mañana.", "Apagar el IVR para que no entren llamadas."], correctAnswer: 1 },
-    { id: 17, type: "multiple_choice", question: "Observas en el gráfico de distribución del grupo que de 90 asesores, casi el 49% (44 asesores) se encuentran en 'Pausa administrativa', dejando solo 27 disponibles. ¿Cuál es el riesgo principal y tu acción inmediata?", options: ["No hay riesgo si hay pocos contactos entrando.", "Riesgo inminente de caída de Service Level por falta de adherencia; se debe coordinar de inmediato con los supervisores en piso para retornar agentes a estado 'Disponible'.", "Felicitar al equipo por realizar labores administrativas.", "Activar inmediatamente devoluciones de llamada (callback)."], correctAnswer: 1 },
-    { id: 18, type: "multiple_choice", question: "En el panel de supervisión detallado, detectas a varios agentes con estados de 'Pausa administrativa' que superan las 2 e incluso 5 horas continuas sin estar en llamada. ¿Qué indica esto operativamente?", options: ["Es una práctica normal y saludable de backoffice.", "Que el volumen Inbound es demasiado bajo y el sistema los pausa.", "Falla general de la plataforma telefónica en toda la red.", "Fuga de capacidad severa o uso incorrecto de auxiliares; requiere intervención inmediata del supervisor para validar qué hacen esos agentes."], correctAnswer: 3 }
+    { id: 2, type: "true_false", question: "Durante un pico de demanda por una emergencia sanitaria con mÃºltiples canales bajo presiÃ³n, se debe proteger primero el canal Digital (WhatsApp) antes que el Inbound.", options: ["Verdadero", "Falso"], correctAnswer: 1 },
+    { id: 3, type: "true_false", question: "Una mayor ocupaciÃ³n mejora la eficiencia, pero conlleva el riesgo de agotamiento del personal mÃ©dico/administrativo y un ASA mÃ¡s prolongado si es demasiado alta.", options: ["Verdadero", "Falso"], correctAnswer: 0 },
+    { id: 4, type: "true_false", question: "La fÃ³rmula de Erlang C se utiliza principalmente para estimar las necesidades de FTE en funciÃ³n del volumen Inbound, AHT y SL objetivo.", options: ["Verdadero", "Falso"], correctAnswer: 0 },
+    { id: 5, type: "true_false", question: "Para definir umbrales de alerta Ãºtiles, es recomendable comenzar con la volatilidad histÃ³rica del intervalo y ajustar por canal (Inbound, Outbound, Digital).", options: ["Verdadero", "Falso"], correctAnswer: 0 },
+    { id: 6, type: "multiple_choice", question: "Si una campaÃ±a de vacunaciÃ³n o emergencia aumenta el volumen Inbound en un 60% en 10 minutos, Â¿cuÃ¡l de las siguientes acciones es la mÃ¡s adecuada para los primeros 30 minutos?", options: ["Suspender descansos/capacitaciÃ³n, priorizar llamadas Inbound y enviar comunicaciÃ³n de la situaciÃ³n a las clÃ­nicas.", "Normalizar los horarios y publicar un resumen posterior al incidente.", "Limitar la concurrencia de WhatsApp y establecer reuniones de crisis cada 120 minutos.", "Ignorar el aumento hasta que pasen 60 minutos para confirmar la tendencia."], correctAnswer: 0 },
+    { id: 7, type: "multiple_choice", question: "Â¿QuÃ© mÃ©tricas son esenciales monitorear en un panel de control intradiario para una operaciÃ³n de salud?", options: ["Tasa de conversiÃ³n de ventas y costo por adquisiciÃ³n.", "SL, ASA, profundidad de la cola, abandono y ocupaciÃ³n por canal (Inbound/Digital).", "Ausentismo mensual y rotaciÃ³n de personal (MÃ©tricas de HR).", "Costo por llamada y margen de beneficio."], correctAnswer: 1 },
+    { id: 8, type: "multiple_choice", question: "Â¿QuÃ© herramienta intradiaria es mejor utilizar para gestionar la demanda (reducir volumen entrante) durante un pico de llamadas?", options: ["Mensajes en el IVR y respuestas automÃ¡ticas en WhatsApp derivando al portal de pacientes (autoservicio).", "Intercambios de VTO y horas extras.", "Asignar agentes con habilidades transversales.", "Congelar el tiempo improductivo."], correctAnswer: 0 },
+    { id: 9, type: "multiple_choice", question: "Â¿CÃ³mo se debe gestionar un problema de adherencia recurrente en un agente o coordinador de citas sin perjudicar su moral?", options: ["Despedir al agente de inmediato.", "Ignorarlo si el agente tiene buen AHT.", "Colaborar con supervisores en un plan de capacitaciÃ³n que considere el contexto (retrasos en el sistema mÃ©dico, formaciÃ³n).", "Hacer una advertencia pÃºblica en el chat grupal."], correctAnswer: 2 },
+    { id: 10, type: "multiple_choice", question: "Cuando la direcciÃ³n mÃ©dica exige baja tasa de abandono en Inbound (urgencias), pero administraciÃ³n presiona por mayor disponibilidad en Digital (WhatsApp) para agendar citas, Â¿cÃ³mo manejas estas prioridades contrapuestas?", options: ["Priorizar siempre agendamiento porque genera ingresos a las clÃ­nicas.", "Priorizar siempre Inbound sin notificar a las otras Ã¡reas.", "Cuantificar el impacto en la atenciÃ³n, proponer priorizaciÃ³n Inbound con medidas de protecciÃ³n y desbordes para WhatsApp.", "Dejar que los agentes decidan quÃ© canal atender."], correctAnswer: 2 },
+    { id: 11, type: "yes_no", question: "Â¿Es una buena prÃ¡ctica experimentar con opciones de devoluciÃ³n de llamada (callback) en Inbound durante picos de demanda si el proceso clÃ­nico lo permite?", options: ["SÃ­", "No"], correctAnswer: 0 },
+    { id: 12, type: "yes_no", question: "Â¿Se debe priorizar la velocidad (SL/ASA) a expensas de la calidad de atenciÃ³n al paciente (CSAT) de forma indefinida durante perÃ­odos de alto trÃ¡fico?", options: ["SÃ­", "No"], correctAnswer: 1 },
+    { id: 13, type: "yes_no", question: "Â¿Es correcto tomar decisiones intradiarias basÃ¡ndose Ãºnicamente en la intuiciÃ³n cuando los datos de los paneles son confusos o poco fiables?", options: ["SÃ­", "No"], correctAnswer: 1 },
+    { id: 14, type: "yes_no", question: "Â¿Se deberÃ­a incluir una matriz RACI y Ã¡rboles de decisiÃ³n en un manual de estrategias en tiempo real para contingencias sanitarias?", options: ["SÃ­", "No"], correctAnswer: 0 },
+    { id: 15, type: "yes_no", question: "Â¿Mover temporalmente agentes de Outbound (campaÃ±as preventivas) a Inbound (atenciÃ³n inmediata) es una tÃ¡ctica vÃ¡lida durante un pico imprevisto de volumen?", options: ["SÃ­", "No"], correctAnswer: 0 },
+    { id: 16, type: "multiple_choice", question: "Al revisar el panel de KPIs de atenciÃ³n, notas que en la franja de 08:00 a 10:00 AM el nÃºmero de llamadas abandonadas se dispara (mÃ¡s de 20 por intervalo), mientras que en la madrugada es casi nulo. Â¿QuÃ© acciÃ³n preventiva debes tomar para los siguientes dÃ­as?", options: ["Esperar al final del dÃ­a para reportarlo al cliente.", "Alinear los horarios y restringir descansos/pausas en la franja de 08:00 a 10:00 para maximizar la concurrencia en el pico.", "Reducir la cantidad de agentes en Inbound en la maÃ±ana.", "Apagar el IVR para que no entren llamadas."], correctAnswer: 1 },
+    { id: 17, type: "multiple_choice", question: "Observas en el grÃ¡fico de distribuciÃ³n del grupo que de 90 asesores, casi el 49% (44 asesores) se encuentran en 'Pausa administrativa', dejando solo 27 disponibles. Â¿CuÃ¡l es el riesgo principal y tu acciÃ³n inmediata?", options: ["No hay riesgo si hay pocos contactos entrando.", "Riesgo inminente de caÃ­da de Service Level por falta de adherencia; se debe coordinar de inmediato con los supervisores en piso para retornar agentes a estado 'Disponible'.", "Felicitar al equipo por realizar labores administrativas.", "Activar inmediatamente devoluciones de llamada (callback)."], correctAnswer: 1 },
+    { id: 18, type: "multiple_choice", question: "En el panel de supervisiÃ³n detallado, detectas a varios agentes con estados de 'Pausa administrativa' que superan las 2 e incluso 5 horas continuas sin estar en llamada. Â¿QuÃ© indica esto operativamente?", options: ["Es una prÃ¡ctica normal y saludable de backoffice.", "Que el volumen Inbound es demasiado bajo y el sistema los pausa.", "Falla general de la plataforma telefÃ³nica en toda la red.", "Fuga de capacidad severa o uso incorrecto de auxiliares; requiere intervenciÃ³n inmediata del supervisor para validar quÃ© hacen esos agentes."], correctAnswer: 3 }
 ];
 
 const openQuestions = [
-    { id: "open_1", type: "open", question: "[Escenario Abierto] Un apagón masivo afecta a 3 de las 5 clínicas principales que atiende el Call Center. El volumen de llamadas Inbound se triplica repentinamente y WhatsApp se satura de pacientes preocupados por sus citas. Describe paso a paso tu plan de acción en los primeros 30 y 60 minutos como Analista RTA." },
-    { id: "open_2", type: "open", question: "[Escenario Abierto] Analizando los KPIs, notas que durante la última semana el AHT (Tiempo Promedio de Atención) en el grupo de Inbound ha subido un 20%, lo que está afectando severamente la Ocupación y el ASA. ¿Cómo investigarías la causa raíz en tiempo real y qué medidas propondrías?" }
+    { id: "open_1", type: "open", question: "[Escenario Abierto] Un apagÃ³n masivo afecta a 3 de las 5 clÃ­nicas principales que atiende el Call Center. El volumen de llamadas Inbound se triplica repentinamente y WhatsApp se satura de pacientes preocupados por sus citas. Describe paso a paso tu plan de acciÃ³n en los primeros 30 y 60 minutos como Analista RTA." },
+    { id: "open_2", type: "open", question: "[Escenario Abierto] Analizando los KPIs, notas que durante la Ãºltima semana el AHT (Tiempo Promedio de AtenciÃ³n) en el grupo de Inbound ha subido un 20%, lo que estÃ¡ afectando severamente la OcupaciÃ³n y el ASA. Â¿CÃ³mo investigarÃ­as la causa raÃ­z en tiempo real y quÃ© medidas propondrÃ­as?" }
 ];
 
 // App State
@@ -131,7 +131,7 @@ function countdownTimer() {
     
     if (timeRemaining <= 0) {
         clearInterval(timerInterval);
-        showAlert("¡El tiempo de 15 minutos se ha agotado! El examen se enviará automáticamente con las respuestas guardadas hasta ahora.");
+        showAlert("Â¡El tiempo de 15 minutos se ha agotado! El examen se enviarÃ¡ automÃ¡ticamente con las respuestas guardadas hasta ahora.");
     }
 }
 
@@ -141,7 +141,7 @@ function updateTimerDisplay() {
     const timerDisplay = document.getElementById('timer-display');
     
     if(timerDisplay) {
-        timerDisplay.textContent = `⏱️ ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        timerDisplay.textContent = `â±ï¸ ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
         if (timeRemaining <= 180) { // 3 minutes warning
             timerDisplay.style.color = 'white';
@@ -169,7 +169,7 @@ function renderQuestions() {
         
         if (q.type === 'open') {
             answerAreaHtml = `
-                <textarea id="q${q.id}_open" class="open-textarea" rows="4" placeholder="Escribe tu respuesta detallada aquí..." style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-family: inherit; resize: vertical;"></textarea>
+                <textarea id="q${q.id}_open" class="open-textarea" rows="4" placeholder="Escribe tu respuesta detallada aquÃ­..." style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); font-family: inherit; resize: vertical;"></textarea>
             `;
         } else {
             let optionsHtml = '';
@@ -185,7 +185,7 @@ function renderQuestions() {
         }
         
         card.innerHTML = `
-            <div style="font-size: 0.85rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Pregunta ${qNumber} de ${totalQ} ${q.type === 'open' ? '(Desarrollo)' : '(Opción Múltiple)'}</div>
+            <div style="font-size: 0.85rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Pregunta ${qNumber} de ${totalQ} ${q.type === 'open' ? '(Desarrollo)' : '(OpciÃ³n MÃºltiple)'}</div>
             <div class="question-text">${q.question}</div>
             ${answerAreaHtml}
         `;
@@ -221,7 +221,7 @@ function updateProgress() {
 function finishExamCheck() {
     const answered = Object.keys(userAnswers).filter(k => userAnswers[k] !== '' && userAnswers[k] !== undefined).length;
     if (answered < currentQuestions.length) {
-        document.getElementById('confirm-message').textContent = `Solo has respondido ${answered} de ${currentQuestions.length} preguntas. ¿Seguro que quieres enviar? Las preguntas sin responder contarán como incorrectas.`;
+        document.getElementById('confirm-message').textContent = `Solo has respondido ${answered} de ${currentQuestions.length} preguntas. Â¿Seguro que quieres enviar? Las preguntas sin responder contarÃ¡n como incorrectas.`;
         confirmModal.classList.add('active');
         return;
     }
@@ -258,7 +258,7 @@ function calculateResults() {
             correctAnswerText = q.options[q.correctAnswer];
         } else {
             answerText = userAnswer || "No respondida";
-            correctAnswerText = "Revisión manual requerida (Ver guía de evaluación)";
+            correctAnswerText = "RevisiÃ³n manual requerida (Ver guÃ­a de evaluaciÃ³n)";
             isCorrect = null; // null represents pending/manual
         }
         
@@ -278,7 +278,7 @@ function calculateResults() {
         reviewItem.innerHTML = `
             <div class="review-q">${index + 1}. ${q.question}</div>
             <div class="review-a">
-                Tu respuesta: <strong>${answerText}</strong> ${isCorrect === true ? '✅' : (isCorrect === false ? '❌' : '📝 (Pendiente)')}<br>
+                Tu respuesta: <strong>${answerText}</strong> ${isCorrect === true ? 'âœ…' : (isCorrect === false ? 'âŒ' : 'ðŸ“ (Pendiente)')}<br>
                 ${isCorrect === false ? `Respuesta esperada: <strong>${correctAnswerText}</strong>` : ''}
             </div>
         `;
@@ -299,18 +299,18 @@ function calculateResults() {
     // SVG elements require setAttribute for class, not className
     let statusClass = 'poor';
     let statusText = 'No Aprobado';
-    let message = "Requiere más entrenamiento en métricas de Salud WFM.";
+    let message = "Requiere mÃ¡s entrenamiento en mÃ©tricas de Salud WFM.";
     
     if (percentage >= 80) {
         circle.setAttribute('class', 'circle excellent');
         statusClass = 'excellent';
         statusText = 'Aprobado (Test)';
-        message = "¡Excelente en teoría! Respuestas abiertas pendientes de revisión.";
+        message = "Â¡Excelente en teorÃ­a! Respuestas abiertas pendientes de revisiÃ³n.";
     } else if (percentage >= 60) {
         circle.setAttribute('class', 'circle good');
         statusClass = 'good';
-        statusText = 'En Revisión';
-        message = "Buen conocimiento base. Analizar respuestas abiertas para decisión final.";
+        statusText = 'En RevisiÃ³n';
+        message = "Buen conocimiento base. Analizar respuestas abiertas para decisiÃ³n final.";
     } else {
         circle.setAttribute('class', 'circle poor');
     }
@@ -345,7 +345,7 @@ function loadRepositoryData() {
     repoBody.innerHTML = '';
     
     if (history.length === 0) {
-        repoBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No hay evaluaciones guardadas aún.</td></tr>`;
+        repoBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No hay evaluaciones guardadas aÃºn.</td></tr>`;
         return;
     }
     
@@ -381,8 +381,8 @@ function showDetailsModal(id) {
     container.innerHTML = '';
 
     record.details.forEach((det, i) => {
-        let isCorrectHtml = det.isCorrect === true ? '<span style="color:var(--success);">✅ Correcto</span>' : 
-                            (det.isCorrect === false ? '<span style="color:var(--danger);">❌ Incorrecto</span>' : '<span style="color:var(--primary);">📝 Pendiente de revisión manual</span>');
+        let isCorrectHtml = det.isCorrect === true ? '<span style="color:var(--success);">âœ… Correcto</span>' : 
+                            (det.isCorrect === false ? '<span style="color:var(--danger);">âŒ Incorrecto</span>' : '<span style="color:var(--primary);">ðŸ“ Pendiente de revisiÃ³n manual</span>');
 
         container.innerHTML += `
             <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
@@ -399,11 +399,11 @@ function showDetailsModal(id) {
 function copyDetailsToClipboard() {
     let text = document.getElementById('detail-candidate-name').textContent + " - Resultados\n\n";
     currentRecordDetails.forEach((det, i) => {
-        text += `${i+1}. ${det.question}\nRespuesta: ${det.answer}\nEstado: ${det.isCorrect === null ? 'Revisión Manual' : (det.isCorrect ? 'Correcto' : 'Incorrecto')}\n\n`;
+        text += `${i+1}. ${det.question}\nRespuesta: ${det.answer}\nEstado: ${det.isCorrect === null ? 'RevisiÃ³n Manual' : (det.isCorrect ? 'Correcto' : 'Incorrecto')}\n\n`;
     });
 
     navigator.clipboard.writeText(text).then(() => {
-        alert("¡Respuestas copiadas al portapapeles!");
+        alert("Â¡Respuestas copiadas al portapapeles!");
     }).catch(err => {
         const textArea = document.createElement("textarea");
         textArea.value = text;
@@ -411,7 +411,7 @@ function copyDetailsToClipboard() {
         textArea.select();
         document.execCommand("copy");
         document.body.removeChild(textArea);
-        alert("¡Respuestas copiadas al portapapeles!");
+        alert("Â¡Respuestas copiadas al portapapeles!");
     });
 }
 
@@ -447,7 +447,7 @@ function downloadCSV() {
         record.details.forEach(det => {
             row.push(escapeCsv(det.question));
             row.push(escapeCsv(det.answer));
-            let val = det.isCorrect === null ? 'Revisión Manual' : (det.isCorrect ? 'SI' : 'NO');
+            let val = det.isCorrect === null ? 'RevisiÃ³n Manual' : (det.isCorrect ? 'SI' : 'NO');
             row.push(escapeCsv(val));
         });
         
@@ -467,7 +467,7 @@ function downloadCSV() {
         link.click();
         document.body.removeChild(link);
     } catch(e) {
-        showAlert("La descarga directa fue bloqueada por el navegador. Utiliza el botón 'Ver Respuestas' y luego 'Copiar al Portapapeles' para extraer los datos de cada candidato.");
+        showAlert("La descarga directa fue bloqueada por el navegador. Utiliza el botÃ³n 'Ver Respuestas' y luego 'Copiar al Portapapeles' para extraer los datos de cada candidato.");
     }
 }
 
