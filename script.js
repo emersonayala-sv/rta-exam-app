@@ -302,6 +302,23 @@ function saveToRepository(name, score, status, statusClass, details) {
     };
     history.push(newRecord);
     localStorage.setItem('rta_exam_results', JSON.stringify(history));
+
+    // --- INTEGRACION CON GOOGLE SHEETS ---
+    // Reemplaza la siguiente linea con el enlace (URL) que te de Google Apps Script
+    var GOOGLE_SCRIPT_URL = "TU_ENLACE_DE_GOOGLE_SCRIPT_AQUI"; 
+    
+    if (GOOGLE_SCRIPT_URL !== "TU_ENLACE_DE_GOOGLE_SCRIPT_AQUI") {
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Evita errores de seguridad CORS
+            headers: {
+                'Content-Type': 'text/plain' // text/plain evita llamadas preflight que bloquea Google
+            },
+            body: JSON.stringify(newRecord)
+        }).catch(function(error) {
+            console.log('Error enviando a Sheets:', error);
+        });
+    }
 }
 
 function loadRepositoryData() {
