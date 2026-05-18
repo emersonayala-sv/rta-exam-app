@@ -729,7 +729,7 @@ let currentQuestions = [];
 let userAnswers = {};
 let participantName = "";
 let timerInterval;
-let timeRemaining = 15 * 60;
+let timeRemaining = 30 * 60;
 let currentRecordDetails = [];
 
 // DOM Elements
@@ -811,7 +811,7 @@ function startExam() {
     userAnswers = {};
 
     clearInterval(timerInterval);
-    timeRemaining = 15 * 60;
+    timeRemaining = 30 * 60;
     updateTimerDisplay();
     timerInterval = setInterval(countdownTimer, 1000);
 
