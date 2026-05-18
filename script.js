@@ -305,9 +305,9 @@ function saveToRepository(name, score, status, statusClass, details) {
 
     // --- INTEGRACION CON GOOGLE SHEETS ---
     // Reemplaza la siguiente linea con el enlace (URL) que te de Google Apps Script
-    var GOOGLE_SCRIPT_URL = "TU_ENLACE_DE_GOOGLE_SCRIPT_AQUI"; 
+    var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9jdk432G-pGuordzTEswy60HdF9hWwk0Of9QwvFMKBatHvLXZBGLNJ671DeGodhtbRA/exec"; 
     
-    if (GOOGLE_SCRIPT_URL !== "TU_ENLACE_DE_GOOGLE_SCRIPT_AQUI") {
+    if (GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbz9jdk432G-pGuordzTEswy60HdF9hWwk0Of9QwvFMKBatHvLXZBGLNJ671DeGodhtbRA/exec") {
         fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors', // Evita errores de seguridad CORS
